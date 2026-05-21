@@ -5,7 +5,90 @@
   <meta name="viewport" content="width=930" />
   <title>日常请销假1</title>
   <script>
-    function openDetail() {
+    const leaveRecords = [
+      {
+        startDate: '2026年5月2日',
+        startTime: '00点',
+        endDate: '2026年5月5日',
+        endTime: '00点',
+        total: '3天0小时',
+        type: '其他',
+        reason: '实验室科研',
+        place: '无',
+        detailPlace: '无',
+        approveDate: '2026-05-02'
+      },
+      {
+        startDate: '2026年4月30日',
+        startTime: '00点',
+        endDate: '2026年4月30日',
+        endTime: '22点',
+        total: '0天22小时',
+        type: '其他',
+        reason: '实验室科研',
+        place: '新疆维吾尔自治区乌鲁木齐市水磨沟区',
+        detailPlace: '无',
+        approveDate: '2026-04-30'
+      },
+      {
+        startDate: '2026年4月17日',
+        startTime: '12点',
+        endDate: '2026年4月18日',
+        endTime: '12点',
+        total: '1天0小时',
+        type: '其他',
+        reason: '实验室科研',
+        place: '无',
+        detailPlace: '无',
+        approveDate: '2026-04-17'
+      },
+      {
+        startDate: '2026年4月9日',
+        startTime: '10点',
+        endDate: '2026年4月9日',
+        endTime: '22点',
+        total: '0天12小时',
+        type: '就医',
+        reason: '就医',
+        place: '无',
+        detailPlace: '无',
+        approveDate: '2026-04-09'
+      },
+      {
+        startDate: '2025年12月13日',
+        startTime: '20点',
+        endDate: '2025年12月14日',
+        endTime: '01点',
+        total: '0天5小时',
+        type: '其他',
+        reason: '火锅',
+        place: '火锅',
+        detailPlace: '火锅',
+        approveDate: '2025-12-13'
+      }
+    ];
+
+    function setText(id, text) {
+      document.getElementById(id).textContent = text;
+    }
+
+    function openDetail(index) {
+      const record = leaveRecords[index] || leaveRecords[0];
+      setText('detailStartDate', record.startDate);
+      setText('detailStartTime', record.startTime);
+      setText('detailEndDate', record.endDate);
+      setText('detailEndTime', record.endTime);
+      setText('detailTotal', record.total);
+      setText('detailType', record.type);
+      setText('detailReason', record.reason);
+      setText('detailPlace', record.place);
+      setText('detailAddress', record.detailPlace);
+      setText('goDate', record.startDate);
+      setText('goTime', record.startTime);
+      setText('returnDate', record.endDate);
+      setText('returnTime', record.endTime);
+      setText('teacherApprove', `【${record.approveDate}】 - 【班主任于迎霞】 - 【审批通过】 - 同意`);
+      setText('studentApply', `【${record.approveDate}】 - 【学生张子翊】 - 【发起流程】 - 张子翊(20241402230)发起申请`);
       document.getElementById('listPage').style.display = 'none';
       document.getElementById('detailPage').style.display = 'block';
       window.scrollTo(0,0);
@@ -256,7 +339,7 @@
     <header class="topbar"><span class="back"></span>日常请销假1</header>
 
     <section class="list">
-      <article class="item">
+      <article class="item clickable" onclick="openDetail(0)">
         <div class="row"><span class="label">事由类型:</span><span class="value">其他共计（3天0小时）</span></div>
         <div class="row"><span class="label">请假时间:</span><span class="value">2026-05-02 00点至2026-05-05 00点</span></div>
         <div class="row"><span class="label">外出地点:</span><span class="value">无</span></div>
@@ -264,7 +347,7 @@
         <div class="stamp">已销假</div>
       </article>
 
-      <article class="item clickable" onclick="openDetail()">
+      <article class="item clickable" onclick="openDetail(1)">
         <div class="row"><span class="label">事由类型:</span><span class="value">其他共计（0天22小时）</span></div>
         <div class="row"><span class="label">请假时间:</span><span class="value">2026-04-30 00点至2026-04-30 22点</span></div>
         <div class="row"><span class="label">外出地点:</span><span class="value">无</span></div>
@@ -272,7 +355,7 @@
         <div class="stamp">已销假</div>
       </article>
 
-      <article class="item">
+      <article class="item clickable" onclick="openDetail(2)">
         <div class="row"><span class="label">事由类型:</span><span class="value">其他共计（1天0小时）</span></div>
         <div class="row"><span class="label">请假时间:</span><span class="value">2026-04-17 12点至2026-04-18 12点</span></div>
         <div class="row"><span class="label">外出地点:</span><span class="value">无</span></div>
@@ -280,7 +363,7 @@
         <div class="stamp">已销假</div>
       </article>
 
-      <article class="item">
+      <article class="item clickable" onclick="openDetail(3)">
         <div class="row"><span class="label">事由类型:</span><span class="value">就医共计（0天12小时）</span></div>
         <div class="row"><span class="label">请假时间:</span><span class="value">2026-04-09 10点至2026-04-09 22点</span></div>
         <div class="row"><span class="label">外出地点:</span><span class="value">无</span></div>
@@ -288,7 +371,7 @@
         <div class="stamp">已销假</div>
       </article>
 
-      <article class="item">
+      <article class="item clickable" onclick="openDetail(4)">
         <div class="row"><span class="label">事由类型:</span><span class="value">其他共计（0天5小时）</span></div>
         <div class="row"><span class="label">请假时间:</span><span class="value">2025-12-13 20点至2025-12-14 01点</span></div>
         <div class="row"><span class="label">外出地点:</span><span class="value">火锅</span></div>
@@ -303,17 +386,17 @@
     <header class="topbar"><span class="back" onclick="backToList()"></span>请假详情</header>
 
     <div class="detail-content">
-      <div class="detail-row"><div class="detail-label">请假时间</div><div class="detail-value">2026年4月30日</div></div>
-      <div class="detail-row"><div class="detail-label"></div><div class="detail-value">00点</div></div>
-      <div class="detail-row"><div class="detail-label">至</div><div class="detail-value">2026年4月30日</div></div>
-      <div class="detail-row"><div class="detail-label"></div><div class="detail-value">22点</div></div>
-      <div class="detail-row"><div class="detail-label">共计</div><div class="detail-value">0天22小时</div></div>
+      <div class="detail-row"><div class="detail-label">请假时间</div><div class="detail-value" id="detailStartDate">2026年4月30日</div></div>
+      <div class="detail-row"><div class="detail-label"></div><div class="detail-value" id="detailStartTime">00点</div></div>
+      <div class="detail-row"><div class="detail-label">至</div><div class="detail-value" id="detailEndDate">2026年4月30日</div></div>
+      <div class="detail-row"><div class="detail-label"></div><div class="detail-value" id="detailEndTime">22点</div></div>
+      <div class="detail-row"><div class="detail-label">共计</div><div class="detail-value" id="detailTotal">0天22小时</div></div>
 
       <div class="detail-row"><div class="detail-label">*是否离乌</div><div class="detail-value">● 出校不离乌</div></div>
-      <div class="detail-row"><div class="detail-label">*请假类型</div><div class="detail-value">其他</div></div>
-      <div class="detail-row"><div class="detail-label">*请假事由</div><div class="detail-value">实验室科研</div></div>
-      <div class="detail-row"><div class="detail-label">*外出地点</div><div class="detail-value">新疆维吾尔自治区乌鲁木齐市水磨沟区</div></div>
-      <div class="detail-row"><div class="detail-label">*外出详细地址</div><div class="detail-value">无</div></div>
+      <div class="detail-row"><div class="detail-label">*请假类型</div><div class="detail-value" id="detailType">其他</div></div>
+      <div class="detail-row"><div class="detail-label">*请假事由</div><div class="detail-value" id="detailReason">实验室科研</div></div>
+      <div class="detail-row"><div class="detail-label">*外出地点</div><div class="detail-value" id="detailPlace">新疆维吾尔自治区乌鲁木齐市水磨沟区</div></div>
+      <div class="detail-row"><div class="detail-label">*外出详细地址</div><div class="detail-value" id="detailAddress">无</div></div>
       <div class="detail-row"><div class="detail-label">是否告知家长</div><div class="detail-value">● 是　○ 否</div></div>
       <div class="detail-row"><div class="detail-label">同行人数</div><div class="detail-value">0人</div></div>
 
@@ -333,11 +416,11 @@
       <div class="detail-row"><div class="detail-label"></div><div class="detail-value">请输入其他联系方式</div></div>
 
       <div class="section-title">往返交通工具</div>
-      <div class="detail-row"><div class="detail-label">去</div><div class="detail-value">2026年4月30日</div></div>
-      <div class="detail-row"><div class="detail-label">时间</div><div class="detail-value">00点</div></div>
+      <div class="detail-row"><div class="detail-label">去</div><div class="detail-value" id="goDate">2026年4月30日</div></div>
+      <div class="detail-row"><div class="detail-label">时间</div><div class="detail-value" id="goTime">00点</div></div>
       <div class="detail-row"><div class="detail-label">交通工具</div><div class="detail-value">汽车</div></div>
-      <div class="detail-row"><div class="detail-label">返</div><div class="detail-value">2026年4月30日</div></div>
-      <div class="detail-row"><div class="detail-label">时间</div><div class="detail-value">00点</div></div>
+      <div class="detail-row"><div class="detail-label">返</div><div class="detail-value" id="returnDate">2026年4月30日</div></div>
+      <div class="detail-row"><div class="detail-label">时间</div><div class="detail-value" id="returnTime">00点</div></div>
       <div class="detail-row"><div class="detail-label">交通工具</div><div class="detail-value">汽车</div></div>
 
       <div class="upload-box">
@@ -368,8 +451,8 @@
       </div>
 
       <div class="flow-title">审核步骤信息</div>
-      <div class="approve-info">【2026-04-30】 - 【班主任于迎霞】 - 【审批通过】 - 同意</div>
-      <div class="approve-info">【2026-04-30】 - 【学生张子翊】 - 【发起流程】 - 张子翊(20241402230)发起申请</div>
+      <div class="approve-info" id="teacherApprove">【2026-04-30】 - 【班主任于迎霞】 - 【审批通过】 - 同意</div>
+      <div class="approve-info" id="studentApply">【2026-04-30】 - 【学生张子翊】 - 【发起流程】 - 张子翊(20241402230)发起申请</div>
     </div>
   </section>
 </body>
